@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Simonetta:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Radio+Canada:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap');
+
+:root {
+  --brand-primary: #4CAF4F;
+  --text-color: #2c0a0a;
+  --background-color: #fff;
+  --nav-background: rgba(184, 216, 190, 0.7);
+}
+html{
+  scroll-behavior: smooth;
+}
+body, html * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  border: none ;
+  font-family: 'Inter', sans-serif;
+}
+
+
+.navbar12 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1vw;
+  background: var(--nav-background);
+  height: 6vw;
+}
+
+.logo .logo-image {
+  width: 4vw;
+  height: auto;
+  margin-left: 35px;
+}
+
+.plantville .nav-plantville .nav-link_plantville {
+  color: var(--brand-primary);
+  font-family: 'Simonetta';
+  font-weight: 1000;
+  font-size: 350%;
+  margin-right: 8vw;
+}
+
+.menu2_3 {
+  display: flex;
+  align-items: center;
+  gap: 70px;
+}
+
+.menu2_3 .nav-item .nav-link {
+  position: relative;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  color: var(--text-color);
+  padding: 5px;
+  transition: 0.3s;
+}
+
+.menu2_3 .nav-item .nav-link::after {
+  content: '';
+  height: 3px;
+  width: 0%;
+  background: #000000;
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  transition: 0.5s;
+}
+
+.menu2_3 .nav-item .nav-link:hover::after {
+  width: 100%;
+}
+
+.nav_btn123 {
+  position: relative;
+}
+
+.nav_btn123 .btn {
+  cursor: pointer;
+  background: var(--brand-primary);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 11.5px 20px;
+  border-radius: 4px;
+  transition: 0.3s;
+  margin-left: 7vw;
+}
+
+.nav_btn123 .btn:hover {
+  background-color: #fff;
+  color: var(--brand-primary);
+  border: 2px solid var(--brand-primary);
+}
+
+.bars {
+  display: none; /* Hide by default, show on mobile if needed */
+}
+
+.userlogo .userlogo1 {
+  width: 100px;
+  height: 50px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .menu2 {
+    display: none; /* Hide menu on mobile */
+  }
+  
+  .bars {
+    display: block; /* Show bars icon on mobile */
+  }
+  
+  .nav_btn123 {
+    display: none; /* Hide login button on mobile */
+  }
+}

@@ -1,0 +1,372 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Radio+Canada:ital,wght@0,300..700;1,300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Helvetica+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+:root {
+    --background: #fff;
+    --navbar-width: 95px;
+    --navbar-width-min: 85px;
+    --navbar-dark-primary: rgba(23, 68, 33, 0.43);
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+/* Button styling */
+/* Container for the button */
+.button-container {
+    position: absolute;
+    top: 1vh;  /* Adjust these values */
+    left: 70%;  /* to position the button */
+    transform: translateX(-50%);  /* Centers the button horizontally */
+
+}
+
+/* Button styling */
+#toggleDisplay {
+    background-color: #4CAF50; /* Green background */
+    border: none;
+    color: white;
+    padding: 0.5vw 1vw;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    border-radius: 12px;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+#toggleDisplay:hover {
+    background-color: #45a049; /* Darker green on hover */
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+/* .nav-button {
+    position: relative;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.nav-button::after {
+    content: '';
+    position: absolute;
+    width: 70%;
+    height: 0.3vw;
+    bottom: 2vh;
+    right: 30%;
+    background-color: #ffffff; /* or any color you prefer 
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.nav-button.active {
+    color: #ffffff; /* or any color you prefer for active state 
+}
+
+.nav-button.active::after {
+    transform: scaleX(1);
+} */
+.nav-button {
+    position: relative;
+    cursor: pointer;
+    transition: color 0.3s ease, font-weight 0.3s ease;
+}
+
+.nav-button.active {
+    color: #3a0202b0;
+    font-weight: 1000;
+}
+/* Date 2024-06-24 */
+#currentDisplay {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'poppins', sans-serif;
+    margin-bottom: 50px;
+    margin-right: 5vw;
+    text-align: center;
+    width: 100%; /* Sets the width to 100% of its container */
+    position: absolute; /* Allows precise positioning */
+    top: 1vw; /* Adjust this value to move it up or down */
+    left: 0; /* Aligns it to the left edge of its container */
+    right: 0; /* Aligns it to the right edge of its container */
+}
+#plantStatus {
+    font-size: 16px;
+    font-weight: bold;
+    font-family: Montserrat;
+    font-weight: medium;
+    text-align: center;
+    position: absolute;
+    top: calc(1vw + 30px); /* Position it below the date */
+    width: 60vw;
+    height: 4vw;
+    left: 23vw;
+    top: 33vw;
+    padding: 10px;
+    border-radius: 36px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    /* Rectangle 374 */
+
+}
+.status-green {
+    background-color: #E0F0E3;
+    color: #000;
+}
+
+.status-red {
+    background-color: rgba(241, 72, 72, 0.27);
+
+
+    color: #000;
+}
+
+.status-yellow {
+    background-color: #F7F3A3;
+    color: #000;
+}
+
+.icon {
+    font-size: 24px;
+    margin-right: 15px;
+}
+#nav-toggle:checked~#nav-header {
+    width: calc(var(--navbar-width-min) - 16px);
+}
+
+#nav-toggle:checked~#nav-content,
+#nav-toggle:checked~#nav-footer {
+    width: var(--navbar-width-min);
+}
+
+#nav-toggle:checked~#nav-header #nav-title {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.1s;
+}
+
+#nav-bar {
+    position: absolute;
+
+    height: 89vh;
+    display: flex;
+    flex-direction: column;
+    color: var(--navbar-light-primary);
+    font-family: 'Inter';
+    overflow: hidden;
+    user-select: none;
+}
+
+#nav-header hr {
+    position: absolute;
+    bottom: 0;
+}
+
+
+#nav-content {
+    margin: -16px 0;
+    padding: 16px 0;
+    position: relative;
+    flex: 1;
+    width: var(--navbar-width);
+    background: var(--navbar-dark-primary);
+    direction: rtl;
+    overflow-x: hidden;
+    transition: width 0.2s;
+}
+
+
+#nav-content-highlight {
+    position: absolute;
+    left: 1px;
+    top: -70px;
+    width: calc(100% - 16px);
+    height: 54px;
+    background: #174421;
+    background-attachment: fixed;
+    transition: top 0.2s;
+}
+
+.nav-button {
+    position: relative;
+    margin-left: 16px;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    direction: ltr;
+    cursor: pointer;
+    z-index: 1;
+    transition: color 0.2s;
+}
+
+.nav-button span {
+    transition: opacity 1s;
+}
+
+.nav-button .fas {
+    transition: min-width 0.2s;
+}
+
+.nav-button:nth-of-type(1):hover {
+    color: #fff;
+}
+
+.nav-button:nth-of-type(1):hover~#nav-content-highlight {
+    top: 16px;
+    width: 95px;
+}
+
+.nav-button:nth-of-type(2):hover {
+    color: #fff;
+}
+
+.nav-button:nth-of-type(2):hover~#nav-content-highlight {
+    top: 70px;
+    width: 95px;
+}
+
+.nav-button:nth-of-type(3):hover {
+    color: #fff;
+}
+
+.nav-button:nth-of-type(3):hover~#nav-content-highlight {
+    top: 124px;
+    width: 95px;
+}
+
+.nav-button:nth-of-type(4):hover {
+    color: #fff;
+}
+
+.nav-button:nth-of-type(4):hover~#nav-content-highlight {
+    top: 178px;
+    width: 95px;
+}
+
+.nav-button:nth-of-type(5):hover {
+    color: #fff;
+}
+
+.nav-button:nth-of-type(5):hover~#nav-content-highlight {
+    top: 232px;
+    width: 95px;
+}
+
+.nav-button:nth-of-type(6):hover {
+    color: #fff;
+}
+
+.nav-button:nth-of-type(6):hover~#nav-content-highlight {
+    top: 286px;
+    width: 95px;
+}
+
+.nav-button:nth-of-type(7):hover~#nav-content-highlight {
+    top: 340px;
+    width: 95px;
+}
+
+.nav-button:nth-of-type(8):hover {
+    color: #fff;
+}
+
+.nav-button:nth-of-type(8):hover~#nav-content-highlight {
+    top: 394px;
+    width: 95px;
+}
+
+#nav-bar .fas {
+    min-width: 3rem;
+    text-align: center;
+}
+
+.copyright {
+    /* Copyright */
+
+    position: absolute;
+    width: 76px;
+    height: 24px;
+    left: 35vw;
+    top: 19px;
+
+    /* Body/Medium/Body 2 */
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.3vw;
+    line-height: 24px;
+    /* identical to box height, or 150% */
+    text-align: right;
+
+    color: #FFFFFF;
+
+}
+
+.container-6 {
+    background: #107125;
+
+    /* Rectangle 7 */
+
+    position: sticky;
+    width: 100vw;
+    height: 64px;
+    left: 0px;
+    top: 635px;
+
+    background: #107125;
+    z-index: 1;
+
+}
+
+.group {
+    /* Group */
+
+    position: absolute;
+    left: 42vw;
+    top: 1vw;
+    width: 2vw;
+    bottom: 0.85%;
+}
+
+.plantville-all-rights-reserved {
+    /* 2024, Plantville. All rights reserved */
+
+    position: absolute;
+    left: 45vw;
+    top: 19px;
+
+    /* Body/Medium/Body 2 */
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1vw;
+    line-height: 24px;
+    /* identical to box height, or 150% */
+    text-align: right;
+
+    color: #FFFFFF;
+
+
+}
+
+
+
+.chartBox {
+    width: 60%;
+    position: absolute;
+    height: 65%;
+    left: calc(50% + var(--navbar-width) / 2);
+    top: 4vw;
+    transform: translateX(-50%);
+    border-radius: 20px;
+    border: solid 3px rgb(34, 57, 73);
+    background: white;
+}

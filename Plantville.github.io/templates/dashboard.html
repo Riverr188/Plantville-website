@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/header.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/logo.png')}}">
+</head>
+
+<body>
+    {% include 'header.html' %}
+    <!-- partial:index.partial.html -->
+    <div id="nav-bar">
+        <div id="nav-header">
+            <hr />
+        </div>
+        <div id="nav-content">
+            <div class="nav-button" data-plant="1"><i></i><span>Plant 1</span></div>
+            <div class="nav-button" data-plant="2"><i></i><span>Plant 2</span></div>
+            <div class="nav-button" data-plant="3"><i></i><span>Plant 3</span></div>
+            <div id="nav-content-highlight"></div>
+        </div>
+        <div class="container-6">
+            <div class="copyright">
+                Copyright
+            </div>
+            <img class="group" src="{{ url_for('static', filename='images/copyright.png')}}" />
+            <div class="plantville-all-rights-reserved">
+                2024, Plantville. All rights reserved
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div id="plant-dashboard">
+                <div id="currentDisplay" class="current-display"></div>
+                <div id="plantStatus" class="plant-status"></div>
+                <div class="button-container">
+                    <button id="toggleDisplay">Percentage View</button>
+                </div>
+                <div class="chartBox">
+                    <canvas id="myChart" data-chart-url="{{ url_for('static', filename='data/Plant 1.csv') }}"></canvas>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js" integrity="sha512-vc58qvvBdrDR4etbxMdlTt4GBQk1qjvyORR2nrsPsFPyrs+/u5c3+1Ct6upOgdZoIl7eq6k3a1UPDSNAQi/32A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
+        <script src="{{ url_for('static', filename='scripts/dashboard.js') }}"></script>
+
+</body>
+
+</html>

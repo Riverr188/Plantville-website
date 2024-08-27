@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Simonetta:wght@900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Radio+Canada:wght@&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/header.css')}}" />
+</head>
+
+<body class="plantville-custom">
+  <nav class="navbar12">
+    <div class="logo">
+      <!-- <img src="../assets/images/remove_bg_ai_17184415864112.png" alt="" class="logo-image"> Insert Logo image -->
+      <img src="{{ url_for('static', filename='images/logo.png')}}" alt="" class="logo-image">
+    </div>
+    <div class="plantville">
+      <li class="nav-plantville"><a class="nav-link_plantville" href="/home_page">Plantville</a></li>
+    </div>
+    <div class="image-16">
+    </div>
+    <ul class="menu2_3">
+      <li class="nav-item"><a class="nav-link" href="/home_page#AboutUs">About us</a></li>
+        <li class="nav-item"><a class="nav-link" href="/home_page#Features">Features</a></li>
+        <li class="nav-item"><a class="nav-link" href="/dashboard">Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link" href="/checkitems">Sensors</a></li>
+    </ul>
+    <div class="nav_btn123">
+      <a href="/"><button type="submit" class="btn" value="logout">Log out</button></a>
+    </div>
+    <div class="bars">
+      <i class="ri-menu-line"></i>
+    </div>
+    <!-- <div class="logo2">
+      <img src="{{ url_for('static', filename='images/logo.png')}}" alt="" class="logo3"> Insert Logo image
+    </div> -->
+    <div class="userlogo">
+      <img src="{{ url_for('static', filename='images/circle-user.svg')}}" alt="" class="userlogo1">
+    </div>
+  </nav>
+</body>
+
+</html>

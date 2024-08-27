@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.bootstrap5.css" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/checkitems.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/logo.png')}}">
+</head>
+<body>
+    {% include 'header.html' %}
+    
+    <div class="wrapper">
+        <div class="container mt-3" style="position: relative;">
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addSensorModal" 
+                    style="position: absolute; top: 70vh; left: 4vw; background-color: rgb(113, 223, 150); border-color: rgb(113, 223, 150);">
+                <small>Add Sensor</small>
+            </button>
+        </div>
+
+        <!-- Add Sensor Modal -->
+        <div class="modal fade" id="addSensorModal" tabindex="-1" aria-labelledby="addSensorModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addSensorModalLabel">Add Sensor</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="sensorInput" class="form-label">Sensor Name</label>
+                            <input type="text" class="form-control" id="sensorInput" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="descriptionInput" class="form-label">Description</label>
+                            <input type="text" class="form-control" id="descriptionInput" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="statusInput" class="form-label">Status</label>
+                            <select class="form-select" id="statusInput" onchange="updateBorder()">
+                                <option value="Active">Active</option>
+                                <option value="Inactive">Inactive</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="font-size: 81%;">Close</button>
+                        <button type="button" class="btn btn-primary" id="saveChangesBtn" style="font-size: 81%;">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit Sensor Modal -->
+        <div class="modal fade" id="editSensorModal" tabindex="-1" aria-labelledby="editSensorModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editSensorModalLabel">Edit Sensor</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="editSensorInput" class="form-label">Sensor Name</label>
+                            <input type="text" class="form-control" id="editSensorInput" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="editDescriptionInput" class="form-label">Description</label>
+                            <input type="text" class="form-control" id="editDescriptionInput" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="editStatusInput" class="form-label">Status</label>
+                            <select class="form-select" id="editStatusInput" onchange="updateBorder()">
+                                <option value="Active">Active</option>
+                                <option value="Inactive">Inactive</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="font-size: 81%;">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="updateSensor()" style="font-size: 81%;">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-responsive table-responsive-data2">
+            <table id="example" class="table table-data2 table-striped mt-3" style="width: 100%">
+                <thead>
+                    <tr>
+                        <th>Sensor</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                        <th>Connection</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Static sensor row -->
+                    <tr id="staticSensorRow">
+                        <td>Sensor 1</td>
+                        <td>Demo</td>
+                        <td><span class="status-badge active">Active</span></td>
+                        <td>
+                            <button class="btn btn-danger" onclick="deleteSensor(this)">Delete</button>
+                            <button class="btn btn-warning" onclick="editSensorModal(this)">Edit</button>
+                        </td>
+                        <td><a href="/dashboard" target="_blank" class="btn btn-primary">Connected</a></td>
+                    </tr>
+                    <!-- Table body -->
+                </tbody>                
+            </table>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='scripts/checkitems.js')}}"></script>
+    <script src="{{ url_for('static', filename='scripts/storagejs.js')}}"></script>
+    <div class="container-6">
+        <div class="copyright">
+          Copyright
+        </div>
+        <img class="group20" src="{{ url_for('static', filename='images/copyright.png')}}" />
+        <div class="plantville-all-rights-reserved">
+          2024, Plantville. All rights reserved
+        </div>
+      </div>
+    </div>
+</body>
+</html>

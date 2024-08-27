@@ -1,0 +1,111 @@
+
+.wrapper .container.mt-3 {
+  position: fixed;
+  right: 50%;
+  bottom: 0;
+  transform: translateX(50%);
+  font-size: 14px;
+  padding: 5px 10px;
+}
+
+.wrapper .container.mt-3 .button.btn.btn-primary {
+  position: fixed;
+  right: 50%;
+  bottom: 0;
+  transform: translateX(50%);
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 2px 5px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.status-badge.active {
+  background-color: rgb(195, 255, 195);
+  color: rgb(0, 110, 28);
+}
+
+.status-badge.inactive {
+  background-color: rgb(255, 191, 191);
+  color: rgb(119, 0, 0);
+}
+.staticSensorRow{
+  display: inline-block;
+  padding: 2px 5px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+.statusbadgefake{
+  background-color: rgb(195, 255, 195);
+  color: rgb(0, 110, 28);
+}
+
+.copyright {
+  /* Copyright */
+
+  position: absolute;
+  width: 76px;
+  height: 24px;
+  left: 35vw;
+  top: 19px;
+
+  /* Body/Medium/Body 2 */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.3vw;
+  line-height: 24px;
+  /* identical to box height, or 150% */
+  text-align: right;
+
+  color: #FFFFFF;
+
+}
+
+.container-6 {
+  background: #107125;
+
+  /* Rectangle 7 */
+
+  position: absolute;
+  width: 100vw;
+  height: 64px;
+  left: 0;
+  bottom: 0;
+
+  background: #107125;
+
+}
+
+.group20 {
+  /* Group */
+
+  position: absolute;
+  left: 42vw;
+  top: 1vw;
+  width: 2vw;
+  bottom: 0.85%;
+}
+
+.plantville-all-rights-reserved {
+  /* 2024, Plantville. All rights reserved */
+
+  position: absolute;
+  left: 45vw;
+  top: 19px;
+
+  /* Body/Medium/Body 2 */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1vw;
+  line-height: 24px;
+  /* identical to box height, or 150% */
+  text-align: right;
+
+  color: #FFFFFF;
+
+
+}

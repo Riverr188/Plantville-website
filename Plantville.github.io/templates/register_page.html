@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plantville - Join Us</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/register_page.css') }}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/logo.png') }}">
+</head>
+<body>
+    <div class="welcome-to-plantville">
+        <img src="{{ url_for('static', filename='images/joinus.png')}}" alt="join us now">
+    </div>
+    <div class="wrapper">
+        <form action="{{ url_for('register_page') }}" method="POST">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/logo.png')}}" alt="Plantville Logo">
+                <h1>Plantville</h1>
+            </div>
+            <div class="input-box">
+                <input type="text" name="username" id="username" placeholder="Username" required>
+                <i class="bx bx-user"></i>
+            </div>
+            <div class="input-box">
+                <input type="text" name="email" id="email" placeholder="Email" required>
+                <i class='bx bxl-gmail'></i>
+            </div>
+            <div class="input-box">
+                <input type="password" name="password" id="password" placeholder="New Password" required>
+                <i class="bx bx-lock-alt"></i>
+            </div>
+            <div class="input-box">
+                <input type="password" name="confirm_password" id="confirm_password" placeholder="Enter again" required>
+                <i class="bx bx-lock-alt"></i>
+            </div>
+            <button type="submit" class="btn">Sign up</button>
+            <div class="register-link">
+                <p>Already have an account!
+                <a href="/"> Sign in </a></p> 
+            </div>
+        </form>
+    </div>
+    {% if msg %}
+        <p>{{ msg }}</p>
+    {% endif %}
+</body>
+</html>
